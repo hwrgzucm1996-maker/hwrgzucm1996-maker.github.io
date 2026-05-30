@@ -1,0 +1,3108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄文锐 Wenrui Huang — 网状Meta与医学科研方法学陪跑</title>
+<meta name="description" content="黄文锐 · 中医妇科博士 · 博士后在站 · SCI 30+ · IF130+ · 250+ 学员 · Meta-analysis & Network Meta-analysis coaching">
+<style>
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg: #000;
+    --bg-2: #0a0a0a;
+    --bg-3: #111;
+    --surface: #1d1d1f;
+    --surface-light: #2d2d2f;
+    --text: #f5f5f7;
+    --text-secondary: #a1a1a6;
+    --text-tertiary: #6e6e73;
+    --accent: #0071e3;
+    --accent-hover: #0077ed;
+    --border: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.2);
+    --max: 980px;
+    --max-wide: 1200px;
+  }
+  
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", 
+                 "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.47;
+    font-weight: 400;
+    letter-spacing: -0.003em;
+    overflow-x: hidden;
+  }
+  
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  button { font-family: inherit; cursor: pointer; }
+  
+  /* ============ NAVIGATION (Apple top bar) ============ */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    height: 48px;
+  }
+  
+  .nav-inner {
+    max-width: var(--max-wide);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+  }
+  
+  .nav-brand {
+    font-size: 21px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    cursor: pointer;
+    color: var(--text);
+  }
+  
+  .nav-brand .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    align-items: center;
+  }
+  
+  .nav-link {
+    font-size: 12px;
+    color: rgba(245, 245, 247, 0.8);
+    padding: 0 14px;
+    cursor: pointer;
+    line-height: 48px;
+    transition: color 0.2s;
+    letter-spacing: -0.01em;
+  }
+  
+  .nav-link:hover { color: var(--text); }
+  .nav-link.active { color: var(--text); }
+  
+  .nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 18px;
+    padding: 4px 8px;
+  }
+  
+  /* ============ PAGES ============ */
+  .page {
+    display: none;
+    min-height: calc(100vh - 48px);
+  }
+  
+  .page.active {
+    display: block;
+    animation: fade 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  }
+  
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+  
+  .container-wide {
+    max-width: var(--max-wide);
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+  
+  /* ============ HERO (Apple product page style) ============ */
+  .hero {
+    padding: 88px 22px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  
+  .hero-eyebrow {
+    font-size: 19px;
+    color: var(--accent);
+    font-weight: 400;
+    letter-spacing: 0.011em;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  
+  .hero-title {
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -0.028em;
+    margin-bottom: 12px;
+    position: relative;
+    background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.14;
+    font-weight: 400;
+    letter-spacing: 0.004em;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto 24px;
+    position: relative;
+  }
+  
+  .hero-tagline {
+    font-size: clamp(24px, 3.2vw, 32px);
+    font-weight: 600;
+    letter-spacing: -0.009em;
+    line-height: 1.25;
+    margin: 40px auto 36px;
+    max-width: 720px;
+    position: relative;
+  }
+  
+  .hero-tagline .grad {
+    background: linear-gradient(120deg, #2997ff 0%, #5856d6 50%, #af52de 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 24px;
+    font-size: 17px;
+    font-weight: 400;
+    border-radius: 980px;
+    transition: all 0.2s;
+    border: none;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  
+  .btn-primary:hover { background: var(--accent-hover); }
+  
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  
+  .btn-secondary:hover { background: rgba(0, 113, 227, 0.1); }
+  
+  .btn-arrow {
+    background: none;
+    color: var(--accent);
+    padding: 12px 0;
+    font-size: 17px;
+  }
+  
+  .btn-arrow:hover { text-decoration: underline; }
+  
+  /* ============ HERO PORTRAIT ============ */
+  .hero-portrait {
+    margin: 48px auto 0;
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 113, 227, 0.2);
+  }
+  
+  .hero-portrait::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, #2997ff, #5856d6, #af52de);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .hero-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  
+  /* ============ METRICS (Apple spec-grid style) ============ */
+  .metrics-section {
+    padding: 80px 22px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  
+  .metrics-grid {
+    max-width: var(--max-wide);
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 40px 20px;
+  }
+  
+  .metric {
+    text-align: center;
+  }
+  
+  .metric-value {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1;
+    background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  
+  .metric-value .unit {
+    font-size: 0.5em;
+    color: var(--text-secondary);
+    margin-left: 2px;
+    -webkit-text-fill-color: var(--text-secondary);
+  }
+  
+  .metric-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: -0.008em;
+  }
+  
+  /* ============ SECTION (Apple big section) ============ */
+  section.feature {
+    padding: 120px 22px;
+    text-align: center;
+  }
+  
+  .feature-label {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  
+  .feature-title {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 600;
+    line-height: 1.07;
+    letter-spacing: -0.015em;
+    max-width: 860px;
+    margin: 0 auto 20px;
+  }
+  
+  .feature-title .muted {
+    color: var(--text-secondary);
+  }
+  
+  .feature-subtitle {
+    font-size: 21px;
+    line-height: 1.38;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin: 0 auto 48px;
+    letter-spacing: 0.011em;
+  }
+  
+  /* ============ CARD GRID (Apple 3-tile) ============ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: var(--max-wide);
+    margin: 0 auto;
+  }
+  
+  .card {
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border-radius: 22px;
+    padding: 40px 32px;
+    text-align: left;
+    border: 1px solid var(--border);
+    transition: transform 0.4s cubic-bezier(0.28, 0.11, 0.32, 1), border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(0, 113, 227, 0.08), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+  }
+  
+  .card:hover::before { opacity: 1; }
+  
+  .card-eyebrow {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  
+  .card h3 {
+    font-size: 28px;
+    line-height: 1.14;
+    font-weight: 600;
+    letter-spacing: -0.009em;
+    margin-bottom: 12px;
+  }
+  
+  .card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    letter-spacing: -0.003em;
+  }
+  
+  /* ============ BIG STATEMENT ============ */
+  .statement {
+    padding: 160px 22px;
+    text-align: center;
+    background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .statement::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(175, 82, 222, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  .statement-text {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .statement-text .highlight {
+    color: var(--text-secondary);
+  }
+  
+  /* ============ ABOUT PAGE ============ */
+  .about-hero {
+    padding: 80px 22px 40px;
+    text-align: center;
+  }
+  
+  .page-label {
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  
+  .page-title {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .page-sub {
+    font-size: 21px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+  
+  .about-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 22px 80px;
+  }
+  
+  .about-block {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .about-block:last-child { border-bottom: none; }
+  
+  .about-block h3 {
+    font-size: 32px;
+    line-height: 1.14;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+  }
+  
+  .about-block h3 .num {
+    color: var(--accent);
+    font-weight: 500;
+    margin-right: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .about-block p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    letter-spacing: -0.003em;
+  }
+  
+  .about-block p strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  
+  .about-block em {
+    font-style: italic;
+    color: #c7c7cc;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin: 40px 0;
+    border-top: 1px solid var(--border);
+  }
+  
+  .info-cell {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .info-key {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  
+  .info-val {
+    font-size: 17px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  
+  /* ============ PUBLICATIONS ============ */
+  .pub-tabs {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    margin: 40px 0 48px;
+    background: var(--surface);
+    border-radius: 980px;
+    padding: 4px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .pub-tab {
+    font-size: 14px;
+    padding: 9px 20px;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-radius: 980px;
+    transition: all 0.3s;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  
+  .pub-tab.active {
+    background: var(--accent);
+    color: white;
+  }
+  
+  .pub-tab-count {
+    margin-left: 5px;
+    opacity: 0.7;
+    font-size: 12px;
+  }
+  
+  .pub-list { display: none; max-width: 880px; margin: 0 auto; }
+  .pub-list.active { display: block; animation: fade 0.4s ease; }
+  
+  .pub-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    gap: 16px;
+    align-items: start;
+    transition: background 0.3s;
+  }
+  
+  .pub-item:hover {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+  }
+  
+  .pub-num {
+    font-size: 20px;
+    color: var(--text-tertiary);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  
+  .pub-content {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+  }
+  
+  .pub-content .author-self {
+    color: var(--text);
+    font-weight: 600;
+  }
+  
+  .pub-journal {
+    color: #c7c7cc;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .pub-doi {
+    font-family: "SF Mono", "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    display: block;
+    margin-top: 6px;
+    letter-spacing: 0;
+    word-break: break-all;
+  }
+  
+  .pub-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+  }
+  
+  .pub-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 980px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  
+  .badge-top {
+    background: linear-gradient(135deg, #ff9500, #ff2d55);
+    color: white;
+  }
+  
+  .badge-q1 {
+    background: rgba(0, 113, 227, 0.15);
+    color: #2997ff;
+    border: 1px solid rgba(0, 113, 227, 0.3);
+  }
+  
+  .badge-q2 {
+    background: rgba(48, 209, 88, 0.12);
+    color: #30d158;
+    border: 1px solid rgba(48, 209, 88, 0.25);
+  }
+  
+  .badge-q3 {
+    background: rgba(152, 152, 157, 0.15);
+    color: #a1a1a6;
+    border: 1px solid rgba(152, 152, 157, 0.25);
+  }
+  
+  .badge-if {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    font-family: "SF Mono", monospace;
+    font-size: 10px;
+  }
+  
+  /* ============ STUDENTS GRID ============ */
+  .student-hero-stat {
+    max-width: 880px;
+    margin: 40px auto 60px;
+    padding: 48px;
+    background: linear-gradient(135deg, rgba(0, 113, 227, 0.08), rgba(175, 82, 222, 0.05));
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    text-align: center;
+  }
+  
+  .student-hero-stat .big-num {
+    font-size: clamp(64px, 10vw, 120px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    background: linear-gradient(120deg, #2997ff, #5856d6, #af52de);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  
+  .student-hero-stat .big-label {
+    font-size: 21px;
+    color: var(--text-secondary);
+    letter-spacing: 0.011em;
+  }
+  
+  .student-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: var(--max-wide);
+    margin: 0 auto;
+  }
+  
+  .student-card {
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .student-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+  }
+  
+  .student-meta {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  
+  .student-card h3 {
+    font-size: 17px;
+    line-height: 1.4;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.008em;
+  }
+  
+  .student-journal {
+    font-size: 14px;
+    color: #c7c7cc;
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  
+  .student-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  
+  .student-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 980px;
+    color: var(--text-secondary);
+  }
+  
+  .student-tag.if {
+    color: #2997ff;
+    border-color: rgba(0, 113, 227, 0.3);
+    background: rgba(0, 113, 227, 0.08);
+    font-weight: 600;
+  }
+
+  .paper-wall {
+    max-width: var(--max-wide);
+    margin: 48px auto 70px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    background:
+      radial-gradient(at 10% 30%, rgba(0, 113, 227, 0.12) 0%, transparent 35%),
+      linear-gradient(180deg, #1d1d1f 0%, #111 100%);
+  }
+
+  .paper-wall-head {
+    padding: 22px 28px;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+
+  .paper-wall-head strong {
+    color: var(--text);
+    font-size: 17px;
+    letter-spacing: -0.01em;
+  }
+
+  .paper-wall-window {
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  .paper-wall-track {
+    display: flex;
+    gap: 14px;
+    width: max-content;
+    animation: paperSlide 42s linear infinite;
+  }
+
+  .paper-wall:hover .paper-wall-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes paperSlide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .paper-chip {
+    width: 280px;
+    min-height: 112px;
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.045);
+    flex: 0 0 auto;
+  }
+
+  .paper-chip .journal {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .paper-chip .topic {
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.45;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .paper-chip .meta {
+    color: var(--text-tertiary);
+    font-size: 12px;
+  }
+
+  .pub-highlight-grid {
+    max-width: var(--max-wide);
+    margin: 40px auto 44px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .pub-highlight-card {
+    padding: 28px;
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at top right, rgba(0, 113, 227, 0.12), transparent 42%),
+      linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+  }
+
+  .pub-highlight-card h3 {
+    font-size: 22px;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .pub-highlight-card .pub-en {
+    color: var(--text-tertiary);
+    font-size: 13px;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .pub-highlight-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  
+  /* Story cards */
+  .stories-head {
+    text-align: center;
+    margin: 100px auto 40px;
+    max-width: 720px;
+  }
+  
+  .story-grid {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .story-card {
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 36px 40px;
+    transition: all 0.3s;
+  }
+  
+  .story-card:hover { border-color: var(--border-strong); }
+  
+  .story-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .story-title {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    max-width: 70%;
+  }
+  
+  .story-meta {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-family: "SF Mono", monospace;
+  }
+  
+  .story-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+  }
+  
+  .story-body strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  
+  /* ============ COURSE PAGE ============ */
+  .course-hero {
+    padding: 80px 22px 0;
+    text-align: center;
+  }
+  
+  .course-hero .tag {
+    display: inline-block;
+    padding: 5px 14px;
+    background: linear-gradient(135deg, rgba(0, 113, 227, 0.15), rgba(175, 82, 222, 0.15));
+    border: 1px solid rgba(0, 113, 227, 0.3);
+    border-radius: 980px;
+    font-size: 12px;
+    color: #2997ff;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  
+  .pillar-grid {
+    max-width: var(--max-wide);
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .pillar {
+    padding: 40px 32px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    text-align: left;
+    transition: all 0.3s;
+  }
+  
+  .pillar:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+  }
+  
+  .pillar-num {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(120deg, #2997ff, #af52de);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  
+  .pillar h4 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  
+  .pillar-en {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 14px;
+  }
+  
+  .pillar p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  
+  /* Outline table */
+  .outline-wrap {
+    max-width: var(--max);
+    margin: 40px auto 0;
+    background: var(--surface);
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  
+  .outline-row {
+    display: grid;
+    grid-template-columns: 60px 140px 1fr 120px;
+    padding: 18px 28px;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  
+  .outline-row:last-child { border-bottom: none; }
+  
+  .outline-row:hover { background: rgba(255, 255, 255, 0.02); }
+  
+  .outline-row.head {
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+  }
+  
+  .outline-num {
+    font-size: 17px;
+    color: var(--accent);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .outline-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  
+  .outline-content {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  
+  .outline-ai {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: right;
+  }
+  
+  /* FAQ */
+  .faq-grid {
+    max-width: var(--max-wide);
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .faq-card {
+    padding: 32px 28px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    text-align: left;
+    transition: all 0.3s;
+  }
+  
+  .faq-card:hover {
+    border-color: var(--border-strong);
+  }
+  
+  .faq-num {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .faq-card h4 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.008em;
+    margin-bottom: 10px;
+  }
+  
+  .faq-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  
+  /* Course CTA */
+  .course-cta {
+    max-width: var(--max);
+    margin: 80px auto 0;
+    padding: 64px 48px;
+    border-radius: 28px;
+    text-align: center;
+    background: 
+      radial-gradient(at 20% 20%, rgba(0, 113, 227, 0.2) 0%, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(175, 82, 222, 0.2) 0%, transparent 50%),
+      linear-gradient(180deg, #1d1d1f 0%, #0a0a0a 100%);
+    border: 1px solid var(--border);
+  }
+  
+  .course-cta h2 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  
+  .course-cta p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    line-height: 1.5;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ============ SERVICE PAGE ============ */
+  .journey-steps {
+    max-width: var(--max-wide);
+    margin: 56px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .journey-step {
+    text-align: left;
+    padding: 24px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+  }
+
+  .journey-step:hover,
+  .journey-step.active {
+    transform: translateY(-3px);
+    border-color: rgba(0, 113, 227, 0.45);
+    background:
+      radial-gradient(circle at top right, rgba(0, 113, 227, 0.16), transparent 40%),
+      linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+  }
+
+  .journey-num {
+    font-size: 13px;
+    color: var(--accent);
+    font-family: "SF Mono", monospace;
+    margin-bottom: 14px;
+  }
+
+  .journey-step h3 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .journey-step p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  .diagnosis-panel {
+    max-width: 880px;
+    margin: 48px auto 0;
+    padding: 38px;
+    border-radius: 28px;
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(at 15% 20%, rgba(0, 113, 227, 0.18) 0%, transparent 45%),
+      linear-gradient(180deg, #1d1d1f 0%, #0b0b0c 100%);
+  }
+
+  .diagnosis-kicker {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .diagnosis-panel h3 {
+    font-size: clamp(26px, 4vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+
+  .diagnosis-panel p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+  }
+
+  .diagnosis-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .service-grid {
+    max-width: var(--max-wide);
+    margin: 56px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 34px 30px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card.featured {
+    border-color: rgba(0, 113, 227, 0.55);
+    box-shadow: 0 24px 70px rgba(0, 113, 227, 0.14);
+  }
+
+  .service-label {
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .service-card h3 {
+    font-size: 27px;
+    line-height: 1.16;
+    letter-spacing: -0.012em;
+    margin-bottom: 10px;
+  }
+
+  .service-price {
+    font-size: 36px;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    margin: 18px 0 12px;
+  }
+
+  .service-price small {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .service-list li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .service-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    position: absolute;
+    left: 0;
+    top: 8px;
+  }
+
+  .price-table {
+    max-width: var(--max);
+    margin: 46px auto 0;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .price-row {
+    display: grid;
+    grid-template-columns: 1.1fr 0.8fr 1.8fr;
+    gap: 18px;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+
+  .price-row:last-child { border-bottom: none; }
+
+  .price-row.head {
+    padding: 15px 28px;
+    color: var(--text-tertiary);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .price-name {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.008em;
+  }
+
+  .price-amount {
+    font-size: 18px;
+    color: var(--text);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .price-note {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .boundary-grid {
+    max-width: var(--max-wide);
+    margin: 48px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .boundary-card {
+    padding: 32px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .boundary-card h3 {
+    font-size: 23px;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .boundary-card.good h3 { color: #30d158; }
+  .boundary-card.no h3 { color: #ff453a; }
+
+  .mode-grid {
+    max-width: var(--max-wide);
+    margin: 48px auto 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+
+  .mode-card {
+    padding: 26px 22px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .mode-num {
+    font-size: 12px;
+    color: var(--accent);
+    font-family: "SF Mono", monospace;
+    margin-bottom: 12px;
+  }
+
+  .mode-card h3 {
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+
+  .mode-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .role-note {
+    max-width: var(--max);
+    margin: 28px auto 0;
+    padding: 24px 28px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 113, 227, 0.28);
+    background: rgba(0, 113, 227, 0.08);
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .role-note strong {
+    color: var(--text);
+  }
+
+  .faq-list {
+    max-width: var(--max);
+    margin: 44px auto 0;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 28px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.006em;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    color: var(--accent);
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .faq-item[open] summary::after {
+    content: '-';
+  }
+
+  .faq-item p {
+    padding: 0 28px 24px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  
+  .next-form {
+    max-width: 780px;
+    margin: 48px auto 0;
+    padding: 36px;
+    border-radius: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  .next-form-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 20px;
+  }
+
+  .next-form-row:last-child { border-bottom: none; }
+
+  .next-form-key {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .next-form-val {
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  
+  /* ============ CONTACT ============ */
+  .contact-content {
+    max-width: var(--max);
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  
+  .contact-intro h3 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  
+  .contact-intro p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  
+  .contact-row:hover {
+    background: var(--surface-light);
+    transform: translateX(4px);
+  }
+  
+  .contact-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0071e3, #5856d6);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .contact-key {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  
+  .contact-val {
+    font-size: 15px;
+    font-weight: 500;
+    word-break: break-all;
+  }
+  
+  .wechat-card {
+    padding: 48px 40px;
+    border-radius: 28px;
+    background: 
+      radial-gradient(at 30% 20%, rgba(0, 113, 227, 0.25) 0%, transparent 50%),
+      radial-gradient(at 70% 80%, rgba(175, 82, 222, 0.2) 0%, transparent 50%),
+      linear-gradient(180deg, #1d1d1f 0%, #0a0a0a 100%);
+    border: 1px solid var(--border);
+    text-align: center;
+    position: sticky;
+    top: 80px;
+  }
+  
+  .wechat-label {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .wechat-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  
+  .wechat-id-box {
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-strong);
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .wechat-id {
+    font-family: "SF Mono", "JetBrains Mono", monospace;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    background: linear-gradient(120deg, #2997ff, #af52de);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .wechat-note {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+  }
+  
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 40px 22px 30px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    margin-top: 80px;
+  }
+  
+  .footer-motto {
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    background: linear-gradient(120deg, #2997ff, #af52de);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  
+  .footer-meta {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    line-height: 1.7;
+  }
+  
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      padding: 10px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .nav-links.show { display: flex; }
+    .nav-link { line-height: 44px; width: 100%; border-bottom: 1px solid var(--border); padding: 0; }
+    .nav-link:last-child { border-bottom: none; }
+    .nav-mobile-toggle { display: block; }
+    
+    .metrics-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 20px;
+    }
+    
+    .card-grid, .pillar-grid, .faq-grid, .pub-highlight-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .journey-steps, .service-grid, .boundary-grid, .mode-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .price-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .price-row.head { display: none; }
+
+    .next-form-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    
+    .student-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .outline-row {
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      padding: 16px 20px;
+      align-items: start;
+    }
+    
+    .outline-row.head { display: none; }
+
+    .outline-row .outline-content {
+      display: block;
+      grid-column: 2;
+      margin-top: -6px;
+    }
+
+    .outline-row .outline-ai {
+      display: inline-block;
+      grid-column: 2;
+      text-align: left;
+      color: var(--accent);
+    }
+    
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    
+    .wechat-card { position: static; }
+    
+    .pub-item {
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+    }
+    
+    .pub-right {
+      grid-column: 2;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 8px;
+    }
+    
+    section.feature { padding: 80px 22px; }
+    .statement { padding: 100px 22px; }
+    
+    .hero-portrait { width: 160px; height: 160px; }
+
+    .course-hero .service-title {
+      font-size: clamp(34px, 11vw, 48px);
+      line-height: 1.08;
+      max-width: 340px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .course-hero .page-sub {
+      max-width: 320px;
+      font-size: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    .journey-steps,
+    .diagnosis-panel,
+    .service-grid,
+    .mode-grid,
+    .price-table,
+    .outline-wrap,
+    .boundary-grid,
+    .course-cta,
+    .next-form,
+    .faq-list,
+    .paper-wall,
+    .pub-highlight-grid {
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .journey-step,
+    .service-card,
+    .boundary-card,
+    .mode-card,
+    .pub-highlight-card {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .journey-step p,
+    .diagnosis-panel p,
+    .service-desc,
+    .service-list li,
+    .price-note,
+    .mode-card p,
+    .faq-item p {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      white-space: normal;
+      max-width: 100%;
+    }
+
+    .paper-wall-head {
+      flex-direction: column;
+    }
+    
+    .story-header { flex-direction: column; }
+    .story-title { max-width: 100%; font-size: 19px; }
+  }
+
+  @media (max-width: 480px) {
+    .container,
+    .container-wide,
+    .course-hero {
+      padding-left: 22px;
+      padding-right: 22px;
+      overflow-x: hidden;
+    }
+
+    .course-hero {
+      padding-top: 72px;
+    }
+
+    .course-hero .tag {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      margin-bottom: 22px;
+    }
+
+    .course-hero .service-title {
+      font-size: 45px;
+      line-height: 1.08;
+      max-width: 320px;
+    }
+
+    .course-hero .page-sub {
+      font-size: 17px;
+      max-width: 300px;
+    }
+
+    .container-wide > div[style*="text-align: center"] h2 {
+      max-width: 330px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 29px !important;
+      line-height: 1.18 !important;
+      overflow-wrap: anywhere;
+    }
+
+    .journey-step,
+    .service-card,
+    .boundary-card,
+    .mode-card,
+    .pub-highlight-card {
+      padding: 22px 20px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: calc(100vw - 44px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .journey-step h3,
+    .service-card h3 {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .journey-step p,
+    .service-desc,
+    .service-list li {
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .diagnosis-panel,
+    .course-cta,
+    .next-form,
+    .faq-list {
+      padding: 28px 24px;
+      border-radius: 24px;
+      width: 100%;
+      max-width: calc(100vw - 44px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq-list {
+      padding: 0;
+    }
+
+    .faq-item summary {
+      padding: 20px 22px;
+      font-size: 16px;
+    }
+
+    .faq-item p {
+      padding: 0 22px 22px;
+      font-size: 14px;
+    }
+
+    .price-row {
+      padding: 20px 22px;
+    }
+  }
+  
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #555; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="showPage('home')">
+      <span class="dot"></span>黄文锐
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-link active" onclick="showPage('home')">首页</li>
+      <li class="nav-link" onclick="showPage('about')">关于</li>
+      <li class="nav-link" onclick="showPage('publications')">论文</li>
+      <li class="nav-link" onclick="showPage('students')">学生成果</li>
+      <li class="nav-link" onclick="showPage('course')">服务方案</li>
+      <li class="nav-link" onclick="showPage('contact')">下一步</li>
+    </ul>
+    <button class="nav-mobile-toggle" onclick="toggleNav()">☰</button>
+  </div>
+</nav>
+
+<!-- ============ HOME ============ -->
+<section class="page active" id="page-home">
+  
+  <div class="hero">
+    <div class="hero-eyebrow">Introducing</div>
+    <h1 class="hero-title">黄文锐</h1>
+    <p class="hero-subtitle">我带医学生、临床医生和中医相关专业同学，用循证医学方法完成一篇可投稿的 Meta / 网状 Meta 研究。</p>
+    <div class="hero-tagline">先判断课题，<span class="grad">再决定怎么走。</span></div>
+    
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="showPage('course')">先判断适合哪类服务</button>
+      <button class="btn btn-secondary" onclick="showPage('students')">看学生成果</button>
+      <button class="btn btn-arrow" onclick="showPage('about')">了解我 ›</button>
+    </div>
+    
+    <div class="hero-portrait">
+      <img src="data:image/jpeg;base64,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" alt="黄文锐">
+    </div>
+  </div>
+  
+  <div class="metrics-section">
+    <div class="feature-label">BY THE NUMBERS</div>
+    <h2 class="feature-title">三年深耕，<br><span class="muted">用结果说话。</span></h2>
+    
+    <div class="metrics-grid">
+      <div class="metric"><div class="metric-value">30<span class="unit">+</span></div><div class="metric-label">SCI 发表</div></div>
+      <div class="metric"><div class="metric-value">11</div><div class="metric-label">一作论文</div></div>
+      <div class="metric"><div class="metric-value">130<span class="unit">+</span></div><div class="metric-label">累计 IF</div></div>
+      <div class="metric"><div class="metric-value">250<span class="unit">+</span></div><div class="metric-label">累计带教学员</div></div>
+      <div class="metric"><div class="metric-value">100<span class="unit">+</span></div><div class="metric-label">24-26 学生发表/接收</div></div>
+      <div class="metric"><div class="metric-value">50<span class="unit">+</span></div><div class="metric-label">年均 SCI 审稿</div></div>
+    </div>
+  </div>
+  
+  <section class="feature">
+    <div class="feature-label">RESEARCH FOCUS</div>
+    <h2 class="feature-title">三个方向，<br><span class="muted">一个核心。</span></h2>
+    <p class="feature-subtitle">循证医学的方法，不同领域的证据。</p>
+    
+    <div class="card-grid">
+      <div class="card" onclick="showPage('publications')">
+        <div class="card-eyebrow">METHODOLOGY</div>
+        <h3>网状 Meta 分析</h3>
+        <p>频率学与贝叶斯双框架。在 Int J Surg、BJOG、J Ethnopharmacol 等顶级期刊发表多篇一作，专注方法学创新。</p>
+      </div>
+      <div class="card" onclick="showPage('publications')">
+        <div class="card-eyebrow">EVIDENCE</div>
+        <h3>循证医学标准</h3>
+        <p>PRISMA-NMA 规范、CINeMA 证据分级、传递性假设。从审稿人视角持续深化对方法学的理解。</p>
+      </div>
+      <div class="card" onclick="showPage('publications')">
+        <div class="card-eyebrow">CLINICAL</div>
+        <h3>中医妇科循证</h3>
+        <p>子宫内膜异位症、复发性流产、围绝经期。将东方医学与现代循证方法结合，发表于国际顶级期刊。</p>
+      </div>
+    </div>
+  </section>
+  
+  <div class="statement">
+    <div class="statement-text">
+      科研的路上，<span class="highlight">没有人能真正独行。</span><br>
+      我最重视的，<br>
+      是让每位学习者能建立<br>
+      做有意义的循证研究的能力。
+    </div>
+  </div>
+  
+  <section class="feature" style="padding-top: 80px;">
+    <div class="feature-label">WHAT'S NEXT</div>
+    <h2 class="feature-title">准备好<span class="muted"> 开始了吗？</span></h2>
+    <p class="feature-subtitle">如果你正在考虑做 Meta / 网状 Meta，建议按「了解我 → 看学生成果 → 判断服务类型」的顺序看。</p>
+    
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="showPage('course')">进入服务分诊</button>
+      <button class="btn btn-secondary" onclick="showPage('publications')">查看学术论文</button>
+    </div>
+  </section>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="page-about">
+  <div class="about-hero">
+    <div class="page-label">BIOGRAPHY</div>
+    <h1 class="page-title">关于我</h1>
+    <p class="page-sub">A brief introduction of who I am and what I do.</p>
+  </div>
+  
+  <div class="about-content">
+    
+    <div class="info-grid">
+      <div class="info-cell"><div class="info-key">Chinese Name</div><div class="info-val">黄文锐</div></div>
+      <div class="info-cell"><div class="info-key">English Name</div><div class="info-val">Wenrui Huang</div></div>
+      <div class="info-cell"><div class="info-key">Education</div><div class="info-val">广州中医药大学 本硕博</div></div>
+      <div class="info-cell"><div class="info-key">Major</div><div class="info-val">中医妇科</div></div>
+      <div class="info-cell"><div class="info-key">Postdoc</div><div class="info-val">博士后在站</div></div>
+      <div class="info-cell"><div class="info-key">Research</div><div class="info-val">循证医学 · NMA</div></div>
+      <div class="info-cell"><div class="info-key">Awards</div><div class="info-val">国家奖学金 · 优秀毕业生</div></div>
+      <div class="info-cell"><div class="info-key">Review</div><div class="info-val">10+ SCI 期刊审稿经历</div></div>
+    </div>
+    
+    <div class="about-block">
+      <h3><span class="num">01</span>学术背景</h3>
+      <p>我是 <strong>黄文锐（Wenrui Huang）</strong>，毕业于<strong>广州中医药大学</strong>，完成本科、硕士、博士共 11 年的医学训练，博士方向为<strong>中医妇科</strong>。</p>
+      <p>博士期间曾获<strong>国家奖学金、优秀毕业生</strong>等荣誉。博士毕业后，我将进入硕士导师所在医院继续做博士后。相较于传统临床科研路径，我接下来会把更多精力放在<strong>循证医学、网状 Meta 分析方法学与中医科研训练</strong>上。我的长期目标，是把过去三年在带教一线摸索出的经验，打磨成一套更系统、更可复制的医学科研方法训练体系。</p>
+    </div>
+    
+    <div class="about-block">
+      <h3><span class="num">02</span>研究轨迹</h3>
+      <p>博士阶段开始系统深耕循证医学与网状 Meta 分析，累计发表 <strong>SCI 论文 30 余篇</strong>，其中<strong>一作 11 篇</strong>，累计影响因子 <strong>130+</strong>。发表论文覆盖 <em>International Journal of Surgery</em>、<em>BJOG</em>、<em>J Ethnopharmacol</em>、<em>Drugs</em>、<em>IJROBP</em> 等 Q1 Top 期刊，IF 最高 <strong>14.4</strong>。</p>
+      <p>研究方向聚焦于<strong>妇科疾病的循证证据综合</strong>——子宫内膜异位症、复发性流产、围绝经期综合征、宫颈癌术后治疗、子宫内膜癌术式选择等临床关键问题。同时在针灸、运动医学、中药等跨领域方向持续产出方法学严谨的系统综述与网状 Meta 分析。</p>
+    </div>
+    
+    <div class="about-block">
+      <h3><span class="num">03</span>审稿与同行评议</h3>
+      <p>拥有 <strong>10 余本 SCI 期刊审稿经历</strong>，每年完成 <strong>50 次以上审稿</strong>。审稿经历让我从评审的视角理解了稿件何以被接受、何以被拒——这些真实的判断标准，成为我后来指导学员时最具体、也最有用的经验来源。</p>
+      <p>审稿的过程是双向的：帮助他人严谨的同时，也在不断打磨自己的方法学系统。每一次"我为什么这样判断"的反思，都是对自己研究方式的一次校准。</p>
+    </div>
+    
+    <div class="about-block">
+      <h3><span class="num">04</span>教学与带教</h3>
+      <p>从 2023 年开始以"师兄"的身份系统带教后来人，累计辅导 <strong>250+ 名学员</strong>。2024-2026 年学生发表/接收 <strong>100+ 篇</strong>，2026 年目前已有 <strong>30+ 返修、15 篇接收</strong>。学员背景跨度极大——从大三在读到工作十余年的在职副高，从医学生到护理、体育、营养、康复跨学科同行。但最让我触动的，始终是那些"背景普通但想把一件事做好"的人。</p>
+      <p>带教覆盖<strong>选题、检索、数据提取、作图、写作、选刊、投稿、返修</strong>的全流程。最终目标不是"发出一篇文章"，而是让学员建立独立完成循证研究的能力——<strong>能判断一个选题值不值得做、能把流程走得规范、能把结论解释得克制、能把论文写得经得起审稿人推敲</strong>。</p>
+    </div>
+    
+    <div class="about-block">
+      <h3><span class="num">05</span>关于这个网站</h3>
+      <p>这个网站记录的是一段正在进行的学术旅程，也是一个愿意与你一起走下去的邀请。如果你对循证研究感兴趣，或在 Meta 分析的某一步卡住，<a style="color: var(--accent); cursor: pointer;" onclick="showPage('contact')">欢迎与我联系</a>。</p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section class="page" id="page-publications">
+  <div class="about-hero">
+    <div class="page-label">PUBLICATIONS</div>
+    <h1 class="page-title">发表论文</h1>
+    <p class="page-sub">Peer-reviewed publications · 30+ SCI · Cumulative IF 130+</p>
+  </div>
+  
+  <div class="container">
+    <div class="pub-tabs">
+      <button class="pub-tab active" onclick="switchPubTab(0)">一作 <span class="pub-tab-count">11</span></button>
+      <button class="pub-tab" onclick="switchPubTab(1)">共一 <span class="pub-tab-count">16</span></button>
+      <button class="pub-tab" onclick="switchPubTab(2)">Top 精选 <span class="pub-tab-count">5</span></button>
+    </div>
+
+    <div class="pub-highlight-grid">
+      <div class="pub-highlight-card">
+        <div class="card-eyebrow">RADIATION ONCOLOGY</div>
+        <h3>IJROBP · Red Journal</h3>
+        <div class="pub-en">Int J Radiat Oncol Biol Phys</div>
+        <p>宫颈癌术后辅助治疗网状 Meta。放射肿瘤学领域经典期刊，适合体现妇科肿瘤与循证方法结合的能力。</p>
+      </div>
+      <div class="pub-highlight-card">
+        <div class="card-eyebrow">SURGERY</div>
+        <h3>International Journal of Surgery</h3>
+        <div class="pub-en">Robotic vs laparoscopic in endometrial cancer</div>
+        <p>子宫内膜癌术式选择的网状 Meta，展示临床问题、统计建模和外科期刊表达之间的衔接。</p>
+      </div>
+      <div class="pub-highlight-card">
+        <div class="card-eyebrow">TCM EVIDENCE</div>
+        <h3>J Ethnopharmacol</h3>
+        <div class="pub-en">Chinese patent medicines for endometriosis</div>
+        <p>中成药治疗子宫内膜异位症的贝叶斯网状 Meta，代表中医药国际循证表达的核心方向。</p>
+      </div>
+    </div>
+    
+    <!-- FIRST AUTHOR -->
+    <div class="pub-list active" id="pub-list-0">
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Fang X, Ou X, Chen L, Tang X, Du X. Postoperative Adjuvant Treatments for Cervical Cancer: A Network Meta-Analysis. <span class="pub-journal">Int J Radiat Oncol Biol Phys</span>. 2025.
+          <span class="pub-doi">doi:10.1016/j.ijrobp.2025.07.1440</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 6.5</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Ou X, Fang X, et al. Comparing robotic, laparoscopic, and laparotomy in endometrial cancer: a network meta-analysis. <span class="pub-journal">Int J Surg</span>. 2025;111(2):2208-2215.
+          <span class="pub-doi">doi:10.1097/JS9.0000000000002175</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 10.1</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Liu T, Yu Y, et al. Efficacy and safety of Chinese patent medicines combined with conventional therapies for endometriosis: A systematic review and bayesian network meta-analysis. <span class="pub-journal">J Ethnopharmacol</span>. 2025;343:119465.
+          <span class="pub-doi">doi:10.1016/j.jep.2025.119465</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 5.4</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Yu Y, Chen L, et al. Comparative effectiveness of low molecular weight heparin on live birth for recurrent spontaneous abortion. <span class="pub-journal">Am J Obstet Gynecol MFM</span>. 2025;7(2):101572.
+          <span class="pub-doi">doi:10.1016/j.ajogmf.2024.101572</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.1</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Du X. Letter in reply re: comparative effectiveness of low molecular weight heparin on live birth for recurrent spontaneous abortion. <span class="pub-journal">Am J Obstet Gynecol MFM</span>.
+          <span class="pub-doi">doi:10.1016/j.ajogmf.2025.101720</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.1</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">06</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Ling J, Fang X, Ou X, Du X. Comparative efficacy of acupuncture-related interventions for tubal obstructive infertility: A systematic review and Bayesian meta-analysis of randomized controlled trials. <span class="pub-journal">Complement Ther Med</span>. 2023;79:103003.
+          <span class="pub-doi">doi:10.1016/j.ctim.2023.103003</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.5</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">07</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Fang X, Du X. Uterus didelphys and pregnancy: A case study of successful outcomes amidst obstetric complexity. <span class="pub-journal">Asian J Surg</span>. 2023;46(12):5464-5465.
+          <span class="pub-doi">doi:10.1016/j.asjsur.2023.07.106</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.8</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">08</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Fang X, Du X. Acupuncture as a potential alternative to hysterectomy? The efficacy in alleviating dysmenorrhea of adenomyosis patients. <span class="pub-journal">Asian J Surg</span>. 2023;46(12):5466-5467.
+          <span class="pub-doi">doi:10.1016/j.asjsur.2023.07.116</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.8</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">09</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Du X. Concerns on classification, statistical methods, and interpretation in NMA on acupuncture for endometriosis. <span class="pub-journal">Arch Gynecol Obstet</span>. 2025.
+          <span class="pub-doi">doi:10.1007/s00404-025-08207-z</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q2">Q2</span><span class="pub-badge badge-if">IF 2.5</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">10</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Li Y, Huang T, Jie H, Han X. Network meta-analysis of Chinese herbal medicine combined with hormone therapy for premature ovarian insufficiency. <span class="pub-journal">J Guangzhou Univ Tradit Chin Med</span>. 2024;41(4):1063-1074.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q3">CSCD</span></div>
+      </div>
+    </div>
+    
+    <!-- CO-FIRST -->
+    <div class="pub-list" id="pub-list-1">
+      <div class="pub-item">
+        <div class="pub-num">01</div>
+        <div class="pub-content">
+          Jiang Y, <span class="author-self">Huang W</span>, Zhang Y, Ji Q. Tirofiban in Acute Ischemic Stroke: Mechanistic Rationale, Clinical Advances, and Emerging Therapeutic Strategies. <span class="pub-journal">Drugs</span>. 2025;85(10):1269-1287.
+          <span class="pub-doi">doi:10.1007/s40265-025-02222-9</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 14.4</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">02</div>
+        <div class="pub-content">
+          Xiong Y, <span class="author-self">Huang W</span>, Wang C, et al. Effectiveness and safety of postoperative medical treatments following fertility-preserving surgery for endometriosis: a network meta-analysis. <span class="pub-journal">BJOG</span>. 2025.
+          <span class="pub-doi">doi:10.1111/1471-0528.70016</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 4.3</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">03</div>
+        <div class="pub-content">
+          Yan R, <span class="author-self">Huang W</span>, Du X. Comparative effectiveness of exercise, protein supplementation, and combined interventions for sarcopenia management in women: a network meta-analysis. <span class="pub-journal">Nutrients</span>. 2025;17:2392.
+          <span class="pub-doi">doi:10.3390/nu17152392</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 4.8</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">04</div>
+        <div class="pub-content">
+          Hua C, <span class="author-self">Huang W</span>, Chen Z, et al. Effects of exercise based cardiac rehabilitation delivery modes on chronic heart failure: a systematic review and network meta-analysis. <span class="pub-journal">Sci Rep</span>. 2024;14(1):31246.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.9</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">05</div>
+        <div class="pub-content">
+          Ling J, Wang T, <span class="author-self">Huang W</span>, et al. Combined liraglutide and metformin therapy in overweight or obese women with PCOS: a systematic review and meta-analysis. <span class="pub-journal">Diabetes Obes Metab</span>. 2025.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 5.7</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">06</div>
+        <div class="pub-content">
+          Chen L, Wang K, <span class="author-self">Huang W</span>, Du X. Comparative efficacy of acupuncture-related interventions for perimenopausal depression and anxiety: A systematic review and frequentist meta-analysis. <span class="pub-journal">Complement Ther Med</span>. 2025.
+          <span class="pub-doi">doi:10.1016/j.ctim.2025.103250</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.5</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">07</div>
+        <div class="pub-content">
+          Mao X, <span class="author-self">Huang W</span>, Zhang S, et al. Comparative efficacy of acupuncture-related therapies for Parkinson's disease: A systematic review and network meta-analysis. <span class="pub-journal">Behav Brain Res</span>. 2025.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q2">Q2</span><span class="pub-badge badge-if">IF 2.3</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">08</div>
+        <div class="pub-content">
+          Peng J, <span class="author-self">Huang W</span>, Duan J. Efficacy and safety of prostaglandin drugs for elevated intraocular pressure: a Bayesian network meta-analysis. <span class="pub-journal">Front Med</span>. 2025;12:1642986.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.0</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">09</div>
+        <div class="pub-content">
+          Chen L, <span class="author-self">Huang W</span>. Comparative efficacy and safety of anti-VEGF agents with and without Laser therapy for diabetic macular edema: A network meta-analysis. <span class="pub-journal">Eur J Ophthalmol</span>. 2025.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q3">Q3</span><span class="pub-badge badge-if">IF 1.4</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">10</div>
+        <div class="pub-content">
+          Xu G, Zhang R, <span class="author-self">Huang W</span>, Du X, Xu W. Comparative effectiveness of statins for COPD patients with pulmonary hypertension: systematic review and network meta-analysis. <span class="pub-journal">Front Med</span>. 2025;12:1640270.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.0</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">11</div>
+        <div class="pub-content">
+          Li Q, <span class="author-self">Huang W</span>, Du X, Zhu L. Kushen gel for the treatment of high-risk human papillomavirus infection: a systematic review and meta-analysis. <span class="pub-journal">Front Med</span>. 2025;12:1707853.
+          <span class="pub-doi">doi:10.3389/fmed.2025.1707853</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.0</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">12</div>
+        <div class="pub-content">
+          Han Y, <span class="author-self">Huang W</span>, Wu W, et al. Twelve Chinese patent medicines combined with conventional medicine for functional dyspepsia: a network meta-analysis. <span class="pub-journal">Front Med</span>. 2025;12:1670153.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.0</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">13</div>
+        <div class="pub-content">
+          Bai J, <span class="author-self">Huang W</span>, Yan R, Du X. Effects of Combined Exercise and Calcium/Vitamin D Supplementation on Bone Mineral Density in Postmenopausal Women. <span class="pub-journal">Nutrients</span>. 2025;17(24):3866.
+          <span class="pub-doi">doi:10.3390/nu17243866</span>
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 4.8</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">14</div>
+        <div class="pub-content">
+          Deng Y, <span class="author-self">Huang W</span>, Zeng T, Gao Y. CDK4/6 inhibitors combined with fulvestrant for HR+/HER2-advanced or metastatic breast cancer: a Bayesian network meta-analysis. <span class="pub-journal">BMC Cancer</span>. 2026.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q2">Q2</span><span class="pub-badge badge-if">IF 3.4</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">15</div>
+        <div class="pub-content">
+          He X, Li T, <span class="author-self">Huang W</span>, et al. Comparative efficacy and safety of non-pharmacological interventions for erectile dysfunction: a systematic review and network meta-analysis. <span class="pub-journal">Sex Med Rev</span>. 2026;14(1):qeag004.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 3.4</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">16</div>
+        <div class="pub-content">
+          Yang Y, Li Y, <span class="author-self">Huang W</span>, et al. Comparative efficacy of probiotic, prebiotic, and synbiotic interventions in children with functional abdominal pain disorders: a systematic review and network meta-analysis. <span class="pub-journal">Front Nutr</span>. 2026;13:1764837.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q2">Q2</span><span class="pub-badge badge-if">IF 5.1</span></div>
+      </div>
+    </div>
+    
+    <!-- TOP -->
+    <div class="pub-list" id="pub-list-2">
+      <div class="pub-item">
+        <div class="pub-num">★</div>
+        <div class="pub-content">
+          Jiang Y, <span class="author-self">Huang W</span>, Zhang Y, Ji Q. <strong>Tirofiban in Acute Ischemic Stroke</strong>. <span class="pub-journal">Drugs</span>. 2025;85(10):1269-1287.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 14.4</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">★</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Ou X, Fang X, et al. <strong>Robotic vs laparoscopic in endometrial cancer</strong>. <span class="pub-journal">Int J Surg</span>. 2025;111(2):2208-2215.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-q1">Q1</span><span class="pub-badge badge-if">IF 10.1</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">★</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Fang X, Ou X, et al. <strong>Postoperative Adjuvant Treatments for Cervical Cancer</strong>. <span class="pub-journal">Int J Radiat Oncol Biol Phys</span>. 2025.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 6.5</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">★</div>
+        <div class="pub-content">
+          <span class="author-self">Huang W</span>, Liu T, Yu Y, et al. <strong>Chinese patent medicines for endometriosis</strong>. <span class="pub-journal">J Ethnopharmacol</span>. 2025;343:119465.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 5.4</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-num">★</div>
+        <div class="pub-content">
+          Xiong Y, <span class="author-self">Huang W</span>, Wang C, et al. <strong>Postoperative treatments after fertility-preserving surgery for endometriosis</strong>. <span class="pub-journal">BJOG</span>. 2025.
+        </div>
+        <div class="pub-right"><span class="pub-badge badge-top">Q1 TOP</span><span class="pub-badge badge-if">IF 4.3</span></div>
+      </div>
+    </div>
+    
+    <div style="margin: 60px auto; max-width: 880px; padding: 28px; background: var(--surface); border-radius: 18px; border: 1px solid var(--border);">
+      <div style="font-size: 12px; color: var(--text-tertiary); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px;">COMPLETE ACADEMIC RECORD</div>
+      <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+        Google Scholar: <a href="https://scholar.google.com/citations?hl=zh-CN&user=SJTeAjwAAAAJ" target="_blank" style="color: var(--accent);">scholar.google.com · SJTeAjwAAAAJ</a><br>
+        ORCID: <a href="https://orcid.org/0000-0003-3403-1473" target="_blank" style="color: var(--accent);">0000-0003-3403-1473</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STUDENTS ============ -->
+<section class="page" id="page-students">
+  <div class="about-hero">
+    <div class="page-label">MENTORSHIP</div>
+    <h1 class="page-title">学生成果</h1>
+    <p class="page-sub">250+ 学员 · 2024-2026 学生发表/接收 100+ · 2026 目前 30+ 返修、15 篇接收</p>
+  </div>
+  
+  <div class="container-wide">
+    <div class="student-hero-stat">
+      <div class="big-num">100<span style="font-size: 0.6em; vertical-align: super;">+</span></div>
+      <div class="big-label">2024-2026 年学生发表/接收 SCI · 2026 年目前 30+ 返修、15 篇接收</div>
+    </div>
+
+    <div class="paper-wall">
+      <div class="paper-wall-head">
+        <strong>学生论文墙 Student Publication Wall</strong>
+        <span>方向横跨中医、针灸、体育、营养、护理、康复、临床医学。</span>
+      </div>
+      <div class="paper-wall-window">
+        <div class="paper-wall-track">
+          <div class="paper-chip"><div class="journal">Front Endocrinol</div><div class="topic">糖尿病前期运动模式 NMA</div><div class="meta">Sports Medicine · IF 4.6</div></div>
+          <div class="paper-chip"><div class="journal">Front Nutrition</div><div class="topic">儿童功能性腹痛益生菌 NMA</div><div class="meta">Pediatrics · IF 5.1</div></div>
+          <div class="paper-chip"><div class="journal">Sports Med Open</div><div class="topic">肌酸补充与游泳表现 Meta</div><div class="meta">Sports · IF 5.9</div></div>
+          <div class="paper-chip"><div class="journal">Front Medicine</div><div class="topic">针灸相关疗法肩周炎 NMA</div><div class="meta">Acupuncture · Q1</div></div>
+          <div class="paper-chip"><div class="journal">BMC Cancer</div><div class="topic">CDK4/6 抑制剂乳腺癌 NMA</div><div class="meta">Oncology · IF 3.4</div></div>
+          <div class="paper-chip"><div class="journal">Sex Med Rev</div><div class="topic">非药物干预 ED 的 NMA</div><div class="meta">Urology · Q1</div></div>
+          <div class="paper-chip"><div class="journal">Front Pharmacol</div><div class="topic">中成药联合西药治疗儿童鼻炎 NMA</div><div class="meta">TCM Pediatrics · IF 4.8</div></div>
+          <div class="paper-chip"><div class="journal">Eur J Med Res</div><div class="topic">麻醉相关 Meta 分析</div><div class="meta">Clinical · 4 个月接收</div></div>
+          <div class="paper-chip"><div class="journal">Front Endocrinol</div><div class="topic">糖尿病前期运动模式 NMA</div><div class="meta">Sports Medicine · IF 4.6</div></div>
+          <div class="paper-chip"><div class="journal">Front Nutrition</div><div class="topic">儿童功能性腹痛益生菌 NMA</div><div class="meta">Pediatrics · IF 5.1</div></div>
+          <div class="paper-chip"><div class="journal">Sports Med Open</div><div class="topic">肌酸补充与游泳表现 Meta</div><div class="meta">Sports · IF 5.9</div></div>
+          <div class="paper-chip"><div class="journal">Front Medicine</div><div class="topic">针灸相关疗法肩周炎 NMA</div><div class="meta">Acupuncture · Q1</div></div>
+          <div class="paper-chip"><div class="journal">BMC Cancer</div><div class="topic">CDK4/6 抑制剂乳腺癌 NMA</div><div class="meta">Oncology · IF 3.4</div></div>
+          <div class="paper-chip"><div class="journal">Sex Med Rev</div><div class="topic">非药物干预 ED 的 NMA</div><div class="meta">Urology · Q1</div></div>
+          <div class="paper-chip"><div class="journal">Front Pharmacol</div><div class="topic">中成药联合西药治疗儿童鼻炎 NMA</div><div class="meta">TCM Pediatrics · IF 4.8</div></div>
+          <div class="paper-chip"><div class="journal">Eur J Med Res</div><div class="topic">麻醉相关 Meta 分析</div><div class="meta">Clinical · 4 个月接收</div></div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin: 60px 0 40px;">
+      <div class="feature-label">FEATURED CASES</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">代表性学员发表</h2>
+    </div>
+    
+    <div class="student-grid">
+      <div class="student-card">
+        <div class="student-meta">SPORTS MEDICINE</div>
+        <h3>不同运动模式对糖尿病前期血糖与血脂的网状 Meta 分析</h3>
+        <div class="student-journal">Frontiers in Endocrinology</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q2</span>
+          <span class="student-tag if">IF 4.6</span>
+          <span class="student-tag">NMA</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">SPORTS MEDICINE</div>
+        <h3>糖尿病前期不同运动类型的最佳剂量</h3>
+        <div class="student-journal">iScience</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q2</span>
+          <span class="student-tag">MA</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">PEDIATRICS</div>
+        <h3>益生菌、益生元、合生元对儿童功能性腹痛的网状 Meta 分析</h3>
+        <div class="student-journal">Frontiers in Nutrition</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q2</span>
+          <span class="student-tag if">IF 5.1</span>
+          <span class="student-tag">NMA</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">REHABILITATION</div>
+        <h3>职业治疗对卒中患者功能恢复的 Meta 分析</h3>
+        <div class="student-journal">Frontiers in Neurology</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q2</span>
+          <span class="student-tag if">IF 2.8</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">ANESTHESIOLOGY</div>
+        <h3>麻醉相关 Meta 分析（副高学员）</h3>
+        <div class="student-journal">European Journal of Medical Research</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q3</span>
+          <span class="student-tag">4 个月接收</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">GYNECOLOGY</div>
+        <h3>自身免疫疾病对卵巢的 Meta 分析</h3>
+        <div class="student-journal">Clinical and Experimental Rheumatology</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q2</span>
+          <span class="student-tag if">IF 3.3</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">TCM PEDIATRICS</div>
+        <h3>中成药联合西药治疗儿童过敏性鼻炎的网状 Meta 分析</h3>
+        <div class="student-journal">Frontiers in Pharmacology</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q1</span>
+          <span class="student-tag if">IF 4.8</span>
+          <span class="student-tag">NMA</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">ACUPUNCTURE</div>
+        <h3>针灸相关疗法对肩周炎的网状 Meta 分析</h3>
+        <div class="student-journal">Frontiers in Medicine</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q1</span>
+          <span class="student-tag if">IF 3.0</span>
+          <span class="student-tag">NMA</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">SPORTS</div>
+        <h3>肌酸补充对游泳运动员表现的系统综述与 Meta 分析</h3>
+        <div class="student-journal">Sports Medicine - Open</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q1</span>
+          <span class="student-tag if">IF 5.9</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">ONCOLOGY</div>
+        <h3>CDK4/6 抑制剂联合氟维司群治疗 HR+/HER2- 晚期乳腺癌</h3>
+        <div class="student-journal">BMC Cancer</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q2</span>
+          <span class="student-tag if">IF 3.4</span>
+          <span class="student-tag">NMA</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">UROLOGY</div>
+        <h3>非药物干预对勃起功能障碍的网状 Meta 分析</h3>
+        <div class="student-journal">Sexual Medicine Reviews</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q1</span>
+          <span class="student-tag if">IF 3.4</span>
+          <span class="student-tag">NMA</span>
+        </div>
+      </div>
+      <div class="student-card">
+        <div class="student-meta">TCM UROLOGY</div>
+        <h3>中成药治疗慢性前列腺炎/盆腔痛的贝叶斯网状 Meta 分析</h3>
+        <div class="student-journal">Journal of Pain Research</div>
+        <div class="student-tags">
+          <span class="student-tag">中科院 Q2</span>
+          <span class="student-tag if">IF 2.5</span>
+          <span class="student-tag">NMA</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="stories-head">
+      <div class="feature-label">REAL STORIES</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1; margin-bottom: 16px;">真实的路径，<br><span style="color: var(--text-secondary);">比数字更有说服力。</span></h2>
+    </div>
+    
+    <div class="story-grid">
+      <div class="story-card">
+        <div class="story-header">
+          <div>
+            <div class="student-meta">CASE 01 · 中医泌尿外科 · 研二</div>
+            <div class="story-title">三投三拒后转投成功：从挫败到接收</div>
+          </div>
+          <div class="story-meta">4 次投稿 · Sex Med Rev · IF 3.4</div>
+        </div>
+        <div class="story-body">
+          这是一个不放弃就会看到转机的故事。5 月中旬选题，6-9 月完成初稿。9 月 18 日首投 World J Urology，22 日被拒。9 月 27 日转投 Andrology，10 月 21 日再拒。10 月 21 日再转 Frontiers in Physiology，22 日秒拒。10 月 22 日投 Journal of Sexual Medicine，10 月 30 日又拒。编辑推荐转投 Sexual Medicine Reviews——12 月 11 日返修，12 月 28 日提交，2026 年 1 月 9 日<strong>接收</strong>。四次拒稿没有击垮这位研二同学，正是在一次次审稿意见中，他把研究打磨得越来越扎实。
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <div>
+            <div class="student-meta">CASE 02 · 药学 · 在职硕</div>
+            <div class="story-title">等待是修行：从焦虑到接收的长跑</div>
+          </div>
+          <div class="story-meta">6 个月 · BMC Cancer · IF 3.4</div>
+        </div>
+        <div class="story-body">
+          工作多年的在职硕师姐，8 月投稿 BMC Cancer，10 月收到大修，改完后又等了两个月没消息。她去小红书看别人的投稿经历，越看越焦虑，半夜睡不着。1 月终于等到小修，她赶在眼科手术前把返修交了。2 月 5 日，<strong>接收</strong>。科研投稿像一场长跑，焦虑是常态，但只要稿件质量扎实，时间会站在你这边。
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <div>
+            <div class="student-meta">CASE 03 · 麻醉 · 副高</div>
+            <div class="story-title">零基础副高的首篇 SCI：4 个月从学到接收</div>
+          </div>
+          <div class="story-meta">Eur J Med Res · IF 2.7</div>
+        </div>
+        <div class="story-body">
+          已经上班多年的副高师姐，Meta 零基础。从学到投稿大概 3 个月。9 月底首次投稿被桌拒，当时挺失落。10 月再投，送审。12 月 25 日返修意见回来，四条意见全是"小修"范畴。2 月<strong>接收</strong>，总共 4 个月。对于临床繁忙的医生来说，这是极难得的效率。
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <div>
+            <div class="student-meta">CASE 04 · 儿科 · 刚毕业研究生</div>
+            <div class="story-title">找对选题，一切顺畅：益生菌与儿童功能性腹痛</div>
+          </div>
+          <div class="story-meta">Front Nutr · IF 5.1 · NMA</div>
+        </div>
+        <div class="story-body">
+          选题是胜负手。检索发现既往研究要么把所有益生菌混在一起，要么只做两两比较，没人做过菌株层面的 NMA——空白点就在这里。仅纳入 20 篇文献，但用 NMA 把益生菌、益生元、合生元横向比较，细化到具体菌株。12 月投稿，2 月底<strong>接收</strong>。选对了有临床意义的题目，发表就顺理成章。
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <div>
+            <div class="student-meta">CASE 05 · 康复 · 上班多年</div>
+            <div class="story-title">面对"无理"审稿人：有理有据坚持到底</div>
+          </div>
+          <div class="story-meta">Front Neurology · IF 2.8</div>
+        </div>
+        <div class="story-body">
+          学习 2 个月后投稿，6 周 2 轮审稿后接收。三位审稿人里一个正常改、一个直接过，第三个审稿人搞了好几轮——后来发现他指出的"图片错误"根本不存在，同一批莫须有的问题反复提。最后直接给编辑写信说明情况，请编辑核实。<strong>该坚持的地方一定要坚持</strong>——GRADE 评级、SMD 异常值、MCID 临床意义、机制讨论，这些才是审稿应该关注的。
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <div>
+            <div class="student-meta">CASE 06 · 2026 年 3 月</div>
+            <div class="story-title">单月 10 篇返修：系统方法的复利</div>
+          </div>
+          <div class="story-meta">8 NMA + 2 MA · 3 区至 1 区 Top</div>
+        </div>
+        <div class="story-body">
+          2026 年 3 月单月，师弟师妹返修消息一条一条进来——10 篇论文，8 篇网状 Meta、2 篇普通 Meta，方向横跨针灸、运动医学、营养、护理、免疫、伤口愈合。期刊从 3 区到 1 区 Top 都有，最高 <strong>IF 10.3</strong>（Journal of Sport and Health Science · 1 区 Top）。写作平均 2-3 个月，投稿到返修约 3 个月。这不是偶然，而是系统方法学训练的复利。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COURSE ============ -->
+<section class="page" id="page-course">
+  <div class="course-hero">
+    <span class="tag">Private Academic Service</span>
+    <h1 class="page-title service-title" style="margin-bottom: 20px;">网状 Meta<br>医学论文<br>方法学陪跑</h1>
+    <p class="page-sub" style="margin-bottom: 40px;">Network Meta-analysis & Medical Research Coaching.</p>
+    <div class="hero-tagline" style="margin: 0 auto 48px; font-size: clamp(24px, 3.2vw, 32px);">
+      <span class="grad">先判断路径，再决定怎么学。</span>
+    </div>
+  </div>
+  
+  <div class="container-wide" style="padding-top: 40px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div class="feature-label">START HERE</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">你现在处在哪一步？<br><span style="color: var(--text-secondary);">点击下面的状态，我先帮你分诊。</span></h2>
+    </div>
+    
+    <div class="journey-steps">
+      <div class="journey-step active" onclick="selectNeed('topic', this)">
+        <div class="journey-num">01</div>
+        <h3>还没选题</h3>
+        <p>不知道自己的专业能不能做 Meta / 网状 Meta，想先判断方向是否成立。</p>
+      </div>
+      <div class="journey-step" onclick="selectNeed('full', this)">
+        <div class="journey-num">02</div>
+        <h3>想完整做一篇</h3>
+        <p>从选题、检索、筛选、数据、分析到写作，希望完整走一遍流程。</p>
+      </div>
+      <div class="journey-step" onclick="selectNeed('revision', this)">
+        <div class="journey-num">03</div>
+        <h3>已有稿件 / 返修</h3>
+        <p>文章已经写好、投稿前想把关，或已经收到审稿意见，不知道怎么回。</p>
+      </div>
+      <div class="journey-step" onclick="selectNeed('ai', this)">
+        <div class="journey-num">04</div>
+        <h3>想系统用 AI</h3>
+        <p>时间比较紧，希望在人工把关下系统学会 AI 科研工作流。</p>
+      </div>
+    </div>
+
+    <div class="diagnosis-panel" id="diagnosisPanel">
+      <div class="diagnosis-kicker">Recommended Path</div>
+      <h3 id="diagnosisTitle">选题与路径诊断</h3>
+      <p id="diagnosisText">如果你还没有明确选题，最先不要急着跑软件。网状 Meta 最先要判断的是 RCT 数量、干预网络、对照组一致性、结局指标和临床解释价值。</p>
+      <div class="diagnosis-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('servicePricing').scrollIntoView({behavior:'smooth'})">查看对应价格</button>
+        <button class="btn btn-arrow" onclick="showPage('contact')">把我的情况发给你 ›</button>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin: 120px 0 40px;">
+      <div class="feature-label">SERVICE TIERS</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">不是所有人都适合<br><span style="color: var(--text-secondary);">同一种带法。</span></h2>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-label">Method-focused Track</div>
+        <h3>方法精修班</h3>
+        <div class="service-price">10500 <small>元</small></div>
+        <p class="service-desc">适合时间相对充裕、想把 Meta / 网状 Meta 全流程扎实走一遍的同学。</p>
+        <ul class="service-list">
+          <li>选题、检索、筛选、数据提取</li>
+          <li>质量评价、Stata / R 分析思路</li>
+          <li>论文框架、结果解释、投稿准备</li>
+          <li>AI 作为辅助工具，不替代方法判断</li>
+        </ul>
+      </div>
+      <div class="service-card featured">
+        <div class="service-label">AI-enabled Track</div>
+        <h3>AI 协同提效班</h3>
+        <div class="service-price">13500 <small>元</small></div>
+        <p class="service-desc">适合时间紧、也想系统掌握科研 AI 工作流的同学。重点不是让 AI 替你做，而是知道怎么用、哪里不能用。</p>
+        <ul class="service-list">
+          <li>包含方法精修班完整内容</li>
+          <li>AI 辅助读文献、搭框架、查逻辑</li>
+          <li>AI 辅助理解结果、排查 R / Stata 问题</li>
+          <li>明确 AI 边界，关键判断人工把关</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-label">High-touch Track</div>
+        <h3>锐哥深度 1v1</h3>
+        <div class="service-price">20000 <small>元</small></div>
+        <p class="service-desc">适合节点很急、要求高、希望我本人更高频把关选题、分析、写作和投稿策略的人。</p>
+        <ul class="service-list">
+          <li>关键节点本人深度介入</li>
+          <li>更高频沟通和优先响应</li>
+          <li>适合毕业、职称、升学等重要时间节点</li>
+          <li>限量接，不适合作为默认选择</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin: 120px 0 40px;">
+      <div class="feature-label">HOW IT WORKS</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">上课不是只看录播，<br><span style="color: var(--text-secondary);">而是一步一步把研究往前推。</span></h2>
+    </div>
+
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-num">01</div>
+        <h3>录播课打底</h3>
+        <p>先看基础录播，按网状 Meta 全流程建立框架。不是先灌概念，而是先解决每一步真正会卡住的问题。</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">02</div>
+        <h3>作业节点推进</h3>
+        <p>选题、检索、筛文献、数据提取、跑图、写作都会对应真实作业。做自己的题，解决自己的问题。</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">03</div>
+        <h3>腾讯会议把关</h3>
+        <p>关键节点约腾讯会议检查，必要时屏幕共享现场示范。重点看方向有没有走偏，避免后面大返工。</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">04</div>
+        <h3>微信快速答疑</h3>
+        <p>小问题不用等到下一节课：文献要不要纳入、数据怎么提、图对不对，尽量快速判断，不让进度卡住。</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">05</div>
+        <h3>投稿返修陪跑</h3>
+        <p>投稿前用审稿人视角检查方法、图表和结论边界；返修时逐条拆解意见，判断怎么改、怎么回。</p>
+      </div>
+    </div>
+
+    <div class="role-note">
+      <strong>合作方式会提前说清楚：</strong>我负责选题、方法学判断、统计结果解释、投稿前质量把关和复杂返修策略；助教/小助手负责资料发送、进度提醒和基础流程协助；学生需要按节点完成作业并及时反馈材料。这样才能既保证质量，也保证推进效率。
+    </div>
+
+    <div style="text-align: center; margin: 120px 0 40px;">
+      <div class="feature-label">FAQ</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">学生最常问的，<br><span style="color: var(--text-secondary);">先在这里说清楚。</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>0 基础可以学吗？</summary>
+        <p>可以，但不建议一上来就追求“快速发”。零基础最重要的是先建立框架：PICOS、检索、筛选、数据提取、质量评价、统计分析、结果解释。课程会按节点推进，但你也需要按时完成自己的作业。</p>
+      </details>
+      <details class="faq-item">
+        <summary>不会 R / Stata 会不会跟不上？</summary>
+        <p>不会软件不是最大问题。真正容易出错的是选题、干预节点、结局指标、传递性假设和结果解释。软件可以一步步学，但研究逻辑必须先判断清楚。</p>
+      </details>
+      <details class="faq-item">
+        <summary>2-3 个月完成是什么意思？</summary>
+        <p>通常指在选题可行、文献量适中、学生能配合作业的情况下，把研究从选题推进到可投稿稿件。不同专业、文献数量、返工程度都会影响周期，所以不会把时间写成绝对承诺。</p>
+      </details>
+      <details class="faq-item">
+        <summary>AI 在课程里怎么用？</summary>
+        <p>AI 可以辅助读文献、搭框架、检查逻辑、理解代码报错、优化表达，但不能替代选题判断、纳排决策、统计模型选择、临床解释和学术诚信。AI 协同提效班会更系统地训练这些工具和边界。</p>
+      </details>
+      <details class="faq-item">
+        <summary>投稿被拒怎么办？</summary>
+        <p>拒稿很常见，不代表研究一定有问题。重要的是判断拒稿原因：选刊不匹配、方法问题、表达问题，还是编辑偏好。能改就改，能转就转；返修则逐条拆解审稿意见，判断哪些必须补、哪些需要解释。</p>
+      </details>
+      <details class="faq-item">
+        <summary>和代写有什么区别？</summary>
+        <p>我做的是方法学陪跑和科研训练，不是代写代投。你需要参与选题、筛选、数据、写作和修改。我的价值是帮你少踩坑、把关键判断做稳、让论文更经得起审稿。</p>
+      </details>
+    </div>
+    
+    <div style="text-align: center; margin: 120px 0 40px;" id="servicePricing">
+      <div class="feature-label">PRICING</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">价格分层，<br><span style="color: var(--text-secondary);">按需求而不是按焦虑。</span></h2>
+    </div>
+    
+    <div class="price-table">
+      <div class="price-row head">
+        <div>Service</div>
+        <div>Price</div>
+        <div>Best for</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">选题与路径诊断</div>
+        <div class="price-amount">699-999</div>
+        <div class="price-note">还没有方向，想先判断自己的专业、时间节点和文献基础适不适合做。</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">投稿前完整预审</div>
+        <div class="price-amount">1999-2999</div>
+        <div class="price-note">文章基本写好，想用审稿人视角检查方法、图表、结果解释和选刊风险。</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">返修指导</div>
+        <div class="price-amount">3000-5000</div>
+        <div class="price-note">已经收到审稿意见，需要逐条拆解、设计回复思路和修改重点。</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">复杂大修陪跑</div>
+        <div class="price-amount">6800-9800</div>
+        <div class="price-note">需要补分析、重做图表、重写方法或讨论，按具体工作量判断。</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">方法精修班</div>
+        <div class="price-amount">10500</div>
+        <div class="price-note">时间相对充裕，想扎实掌握完整 Meta / 网状 Meta 流程。</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">AI 协同提效班</div>
+        <div class="price-amount">13500</div>
+        <div class="price-note">时间紧，想系统掌握 AI 科研工作流，同时保留人工方法学把关。</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">锐哥深度 1v1</div>
+        <div class="price-amount">20000</div>
+        <div class="price-note">节点急、要求高、需要本人更高频深度参与。限量接。</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">科研背景 / 升学规划组合</div>
+        <div class="price-amount">23800 起</div>
+        <div class="price-note">保研、申博、复试、职称或长期科研规划，需单独判断。</div>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin: 120px 0 40px;">
+      <div class="feature-label">PROCESS</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">我怎么带你，<br><span style="color: var(--text-secondary);">不是只教软件。</span></h2>
+    </div>
+
+    <div class="outline-wrap">
+      <div class="outline-row head">
+        <div>#</div>
+        <div>STAGE</div>
+        <div class="outline-content">WHAT WE CHECK</div>
+        <div class="outline-ai">ROLE</div>
+      </div>
+      <div class="outline-row"><div class="outline-num">01</div><div class="outline-title">入组与目标确认</div><div class="outline-content">专业、身份、目标时间、已有方向、是否有稿件</div><div class="outline-ai">先分诊</div></div>
+      <div class="outline-row"><div class="outline-num">02</div><div class="outline-title">选题可行性</div><div class="outline-content">RCT 数量、网络结构、对照组一致性、结局指标、临床解释价值</div><div class="outline-ai">本人把关</div></div>
+      <div class="outline-row"><div class="outline-num">03</div><div class="outline-title">检索与筛选</div><div class="outline-content">检索策略、EndNote、PRISMA、纳排标准、争议文献处理</div><div class="outline-ai">流程推进</div></div>
+      <div class="outline-row"><div class="outline-num">04</div><div class="outline-title">数据与质量评价</div><div class="outline-content">数据提取表、RoB 2、结局指标处理、是否需要补分析</div><div class="outline-ai">初筛+终审</div></div>
+      <div class="outline-row"><div class="outline-num">05</div><div class="outline-title">统计分析与解释</div><div class="outline-content">Stata / R、网络图、森林图、SUCRA、不一致性、传递性和结论边界</div><div class="outline-ai">核心判断</div></div>
+      <div class="outline-row"><div class="outline-num">06</div><div class="outline-title">写作、投稿、返修</div><div class="outline-content">论文框架、结果表达、讨论逻辑、投稿前检查、Response Letter</div><div class="outline-ai">质量控制</div></div>
+    </div>
+
+    <div style="text-align: center; margin: 120px 0 40px;">
+      <div class="feature-label">BOUNDARIES</div>
+      <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.1;">边界清楚，<br><span style="color: var(--text-secondary);">合作才会舒服。</span></h2>
+    </div>
+
+    <div class="boundary-grid">
+      <div class="boundary-card good">
+        <h3>我提供</h3>
+        <ul class="service-list">
+          <li>科研方法学陪跑</li>
+          <li>选题可行性判断</li>
+          <li>检索、筛选、数据提取和质量评价指导</li>
+          <li>Stata / R 分析思路和结果解读</li>
+          <li>投稿前风险把关</li>
+          <li>返修意见拆解和回复策略</li>
+        </ul>
+      </div>
+      <div class="boundary-card no">
+        <h3>我不提供</h3>
+        <ul class="service-list">
+          <li>代写、代做、代投</li>
+          <li>保接收、保分区、保影响因子</li>
+          <li>替代作者承担学术诚信责任</li>
+          <li>无限期、不限主题服务</li>
+          <li>与原研究无关的其他论文</li>
+          <li>不参与执行、只要求结果</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="course-cta">
+      <h2>下一步很简单。</h2>
+      <p>你不用先判断自己该买什么。先把专业、身份、目标时间和目前状态发给我，我会先判断路径，再决定是否需要进一步沟通。</p>
+      <button class="btn btn-primary" onclick="showPage('contact')">查看下一步要发什么 →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="page-contact">
+  <div class="about-hero">
+    <div class="page-label">NEXT STEP</div>
+    <h1 class="page-title">把情况发给我</h1>
+    <p class="page-sub">先分诊，再决定路径。You do not need to decide alone.</p>
+  </div>
+  
+  <div class="container">
+    <div class="contact-content">
+      <div class="contact-intro">
+        <h3>不要一上来就问<br>“我该报哪个”。</h3>
+        <p>先把你的真实情况发给我。我会先判断你适合选题诊断、全流程陪跑、投稿前预审，还是返修指导。不是所有人都适合直接做完整陪跑，先分诊反而更高效。</p>
+        
+        <div class="next-form">
+          <div class="next-form-row">
+            <div class="next-form-key">专业 / 身份</div>
+            <div class="next-form-val">例如：中医妇科研二、针灸博士、临床医生、副高、护理硕士</div>
+          </div>
+          <div class="next-form-row">
+            <div class="next-form-key">目标时间</div>
+            <div class="next-form-val">毕业、职称、保研、申博、课题组成果，分别什么时候需要</div>
+          </div>
+          <div class="next-form-row">
+            <div class="next-form-key">目前状态</div>
+            <div class="next-form-val">没选题 / 已有方向 / 已筛文献 / 已有数据 / 已写稿 / 已投稿 / 已返修</div>
+          </div>
+          <div class="next-form-row">
+            <div class="next-form-key">已有材料</div>
+            <div class="next-form-val">方向关键词、题目草稿、检索结果、初稿、审稿意见都可以</div>
+          </div>
+          <div class="next-form-row">
+            <div class="next-form-key">是否需要 AI</div>
+            <div class="next-form-val">想系统学 AI 工作流，还是只希望常规辅助提效</div>
+          </div>
+        </div>
+        
+        <div class="contact-list">
+          <div class="contact-row">
+            <div class="contact-icon">@</div>
+            <div>
+              <div class="contact-key">EMAIL</div>
+              <div class="contact-val">hwrgzucm1996@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">小</div>
+            <div>
+              <div class="contact-key">XIAOHONGSHU</div>
+              <div class="contact-val">Lucy 科研不路痴</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon" style="background: linear-gradient(135deg, #ff9500, #ff2d55);">G</div>
+            <div>
+              <div class="contact-key">GOOGLE SCHOLAR</div>
+              <div class="contact-val" style="font-size: 13px; font-family: 'SF Mono', monospace;">SJTeAjwAAAAJ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="wechat-card">
+        <div class="wechat-label">ADD ME ON WECHAT</div>
+        <div class="wechat-title">微信是最快的沟通方式</div>
+        <div class="wechat-id-box">
+          <div class="wechat-id">Dearestloveyyt</div>
+        </div>
+        <div class="wechat-note">
+          添加时请备注来源和专业<br>
+          例：「网站｜针灸研二｜想做网状Meta」<br>
+          我会先根据你的情况判断路径。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-motto">掌握方法，远比发表更重要。</div>
+  <div class="footer-meta">
+    Wenrui Huang, Ph.D.<br>
+    广州中医药大学 · 中医妇科博士 · 博士后在站<br>
+    © 2026 All rights reserved
+  </div>
+</footer>
+
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + pageId).classList.add('active');
+    
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const pageIndex = ['home', 'about', 'publications', 'students', 'course', 'contact'].indexOf(pageId);
+    const links = document.querySelectorAll('.nav-link');
+    if (pageIndex !== -1 && links[pageIndex]) links[pageIndex].classList.add('active');
+    
+    document.getElementById('navLinks').classList.remove('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selectNeed(type, el) {
+    const content = {
+      topic: {
+        title: '选题与路径诊断',
+        text: '如果你还没有明确选题，最先不要急着跑软件。网状 Meta 最先要判断的是 RCT 数量、干预网络、对照组一致性、结局指标和临床解释价值。'
+      },
+      full: {
+        title: '方法精修班 / AI 协同提效班',
+        text: '如果你想从 0 到 1 完整做一篇，先判断你是更适合扎实走方法学流程，还是需要把 AI 科研工作流系统加入进来。两者都会用 AI，区别在于 AI 的系统性和推进节奏。'
+      },
+      revision: {
+        title: '投稿前预审 / 返修指导',
+        text: '如果你已经有初稿或审稿意见，就不一定需要完整课程。更重要的是用审稿人视角看方法、图表、结果解释、选刊风险，或逐条拆解审稿意见和 Response Letter。'
+      },
+      ai: {
+        title: 'AI 协同提效班',
+        text: '如果你时间紧，也想系统学会科研 AI 工具，我会更建议 AI 协同提效。但 AI 只是加速器，不替代选题、统计模型、临床解释和学术诚信判断。'
+      }
+    };
+    document.querySelectorAll('.journey-step').forEach(step => step.classList.remove('active'));
+    if (el) el.classList.add('active');
+    document.getElementById('diagnosisTitle').textContent = content[type].title;
+    document.getElementById('diagnosisText').textContent = content[type].text;
+  }
+  
+  function switchPubTab(idx) {
+    document.querySelectorAll('.pub-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pub-list').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.pub-tab')[idx].classList.add('active');
+    document.getElementById('pub-list-' + idx).classList.add('active');
+  }
+  
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('show');
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const initialPage = window.location.hash.replace('#', '');
+    if (['home', 'about', 'publications', 'students', 'course', 'contact'].includes(initialPage)) {
+      showPage(initialPage);
+    }
+  });
+</script>
+
+</body>
+</html>
