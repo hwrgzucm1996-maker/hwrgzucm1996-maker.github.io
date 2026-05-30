@@ -181,6 +181,14 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .hero-cn-name {
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: var(--text-secondary);
+    margin: -2px auto 18px;
+    letter-spacing: 0.04em;
+    position: relative;
+  }
   
   .hero-subtitle {
     font-size: clamp(22px, 3vw, 28px);
@@ -378,6 +386,10 @@
     max-width: var(--max-wide);
     margin: 0 auto;
   }
+
+  .card-grid.basics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
   
   .card {
     background: linear-gradient(180deg, #1d1d1f 0%, #151517 100%);
@@ -429,6 +441,14 @@
     color: var(--text-secondary);
     line-height: 1.6;
     letter-spacing: -0.003em;
+  }
+
+  .basics-grid .card {
+    padding: 34px 26px;
+  }
+
+  .basics-grid .card h3 {
+    font-size: 24px;
   }
   
   /* ============ BIG STATEMENT ============ */
@@ -1300,8 +1320,8 @@
   }
 
   .service-card.featured {
-    border-color: rgba(0, 113, 227, 0.55);
-    box-shadow: 0 24px 70px rgba(0, 113, 227, 0.14);
+    border: 2px solid rgba(0, 113, 227, 0.78);
+    box-shadow: 0 30px 90px rgba(0, 113, 227, 0.22);
   }
 
   .service-label {
@@ -2016,8 +2036,9 @@
   
   <div class="hero">
     <div class="hero-eyebrow">Introducing</div>
-    <h1 class="hero-title">黄文锐</h1>
-    <p class="hero-subtitle">我带医学生、临床医生和中医相关专业同学，用循证医学方法完成一篇可投稿的 Meta / 网状 Meta 研究。</p>
+    <h1 class="hero-title">Huang Wenrui</h1>
+    <div class="hero-cn-name">黄文锐 · 锐哥</div>
+    <p class="hero-subtitle">我带医学生、临床医生、中医、护理和运动医学等专业同学，从课题判断开始，系统完成一篇可投稿的 Meta / 网状 Meta 研究。</p>
     <div class="hero-tagline">先判断课题，<span class="grad">再决定怎么走。</span></div>
     
     <div class="hero-buttons">
@@ -2040,10 +2061,39 @@
       <div class="metric"><div class="metric-value">11</div><div class="metric-label">一作论文</div></div>
       <div class="metric"><div class="metric-value">130<span class="unit">+</span></div><div class="metric-label">累计 IF</div></div>
       <div class="metric"><div class="metric-value">250<span class="unit">+</span></div><div class="metric-label">累计带教学员</div></div>
-      <div class="metric"><div class="metric-value">100<span class="unit">+</span></div><div class="metric-label">24-26 学生发表/接收</div></div>
+      <div class="metric"><div class="metric-value">100<span class="unit">+</span></div><div class="metric-label">2024-2026年学生发表/接收</div></div>
       <div class="metric"><div class="metric-value">50<span class="unit">+</span></div><div class="metric-label">年均 SCI 审稿</div></div>
     </div>
   </div>
+
+  <section class="feature">
+    <div class="feature-label">META / NMA BASICS</div>
+    <h2 class="feature-title">先看懂，<br><span class="muted">你要做的到底是什么。</span></h2>
+    <p class="feature-subtitle">很多同学不是不努力，而是还没弄清楚普通 Meta、网状 Meta 和自己专业问题之间的关系。先判断研究是否成立，再决定要不要投入时间和费用。</p>
+    
+    <div class="card-grid basics-grid">
+      <div class="card">
+        <div class="card-eyebrow">Traditional Meta</div>
+        <h3>普通 Meta</h3>
+        <p>把同一类临床问题下的多个研究合并起来，回答“这个干预到底有没有效果”。适合已有相似研究、比较关系相对直接的题目。</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Network Meta</div>
+        <h3>网状 Meta</h3>
+        <p>当同一疾病下有多种干预方案时，可以同时比较多个治疗节点，进一步讨论排序、证据质量和临床可解释性。</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Who It Helps</div>
+        <h3>哪些人适合</h3>
+        <p>医学生、临床医生、中医、针灸、护理、康复、营养、运动医学等方向，只要问题清楚、文献基础足够，都可以先做可行性判断。</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Before Running Software</div>
+        <h3>先别急着跑图</h3>
+        <p>真正决定文章质量的，不是软件按钮，而是选题价值、PICOS、节点设置、同质性、传递性、结局解释和投稿策略。</p>
+      </div>
+    </div>
+  </section>
   
   <section class="feature">
     <div class="feature-label">RESEARCH FOCUS</div>
@@ -2438,13 +2488,13 @@
   <div class="about-hero">
     <div class="page-label">MENTORSHIP</div>
     <h1 class="page-title">学生成果</h1>
-    <p class="page-sub">250+ 学员 · 2024-2026 学生发表/接收 100+ · 2026 目前 30+ 返修、15 篇接收</p>
+    <p class="page-sub">250+ 学员 · 2024-2026年学生发表/接收 100+ 篇 · 2026年目前 30+ 篇返修，其中 15 篇已接收 · 以上内容可查证</p>
   </div>
   
   <div class="container-wide">
     <div class="student-hero-stat">
       <div class="big-num">100<span style="font-size: 0.6em; vertical-align: super;">+</span></div>
-      <div class="big-label">2024-2026 年学生发表/接收 SCI · 2026 年目前 30+ 返修、15 篇接收</div>
+      <div class="big-label">2024-2026年学生发表/接收 SCI 100+ 篇 · 2026年目前 30+ 篇返修，其中 15 篇已接收 · 以上内容可查证</div>
     </div>
 
     <div class="paper-wall">
@@ -2744,7 +2794,7 @@
         <div class="service-label">Method-focused Track</div>
         <h3>方法精修班</h3>
         <div class="service-price">10500 <small>元</small></div>
-        <p class="service-desc">适合时间相对充裕、想把 Meta / 网状 Meta 全流程扎实走一遍的同学。</p>
+        <p class="service-desc">学习周期通常为 2-3 个月，适合时间相对充裕、想把 Meta / 网状 Meta 全流程扎实走一遍的同学。</p>
         <ul class="service-list">
           <li>选题、检索、筛选、数据提取</li>
           <li>质量评价、Stata / R 分析思路</li>
@@ -2756,9 +2806,10 @@
         <div class="service-label">AI-enabled Track</div>
         <h3>AI 协同提效班</h3>
         <div class="service-price">13500 <small>元</small></div>
-        <p class="service-desc">适合时间紧、也想系统掌握科研 AI 工作流的同学。重点不是让 AI 替你做，而是知道怎么用、哪里不能用。</p>
+        <p class="service-desc">学习周期通常为 1-1.5 个月，适合时间紧、也想系统掌握科研 AI 工作流的同学。重点不是让 AI 替你做，而是知道怎么用、哪里不能用。</p>
         <ul class="service-list">
           <li>包含方法精修班完整内容</li>
+          <li>设置专门的医学科研 AI 讲解课</li>
           <li>AI 辅助读文献、搭框架、查逻辑</li>
           <li>AI 辅助理解结果、排查 R / Stata 问题</li>
           <li>明确 AI 边界，关键判断人工把关</li>
@@ -2768,15 +2819,19 @@
         <div class="service-label">High-touch Track</div>
         <h3>锐哥深度 1v1</h3>
         <div class="service-price">20000 <small>元</small></div>
-        <p class="service-desc">适合节点很急、要求高、希望我本人更高频把关选题、分析、写作和投稿策略的人。</p>
+        <p class="service-desc">适合节点很急、目标要求高、希望锐哥本人更高频在线答疑和深度把关的人。每月限量接不超过 5 名。</p>
         <ul class="service-list">
-          <li>关键节点本人深度介入</li>
-          <li>更高频沟通和优先响应</li>
+          <li>本人高频在线答疑，关键问题优先响应</li>
+          <li>定制化、个性化科研方案设计</li>
+          <li>专业团队跟踪进度与材料</li>
           <li>适合毕业、职称、升学等重要时间节点</li>
-          <li>限量接，不适合作为默认选择</li>
         </ul>
       </div>
     </div>
+
+    <p style="max-width: 920px; margin: 22px auto 0; color: var(--text-tertiary); font-size: 14px; line-height: 1.7; text-align: center;">
+      以上周期仅供正常完成作业节点的学员参考，实际进度会受个人时间安排、文献量、选题难度、返工次数和投稿反馈影响。
+    </p>
 
     <div style="text-align: center; margin: 120px 0 40px;">
       <div class="feature-label">HOW IT WORKS</div>
@@ -2881,17 +2936,17 @@
       <div class="price-row">
         <div class="price-name">方法精修班</div>
         <div class="price-amount">10500</div>
-        <div class="price-note">时间相对充裕，想扎实掌握完整 Meta / 网状 Meta 流程。</div>
+        <div class="price-note">周期约 2-3 个月，适合时间相对充裕、想扎实掌握完整 Meta / 网状 Meta 流程。</div>
       </div>
       <div class="price-row">
         <div class="price-name">AI 协同提效班</div>
         <div class="price-amount">13500</div>
-        <div class="price-note">时间紧，想系统掌握 AI 科研工作流，同时保留人工方法学把关。</div>
+        <div class="price-note">周期约 1-1.5 个月，含专门 AI 讲解课，适合系统掌握 AI 科研工作流并保留人工方法学把关。</div>
       </div>
       <div class="price-row">
         <div class="price-name">锐哥深度 1v1</div>
         <div class="price-amount">20000</div>
-        <div class="price-note">节点急、要求高、需要本人更高频深度参与。限量接。</div>
+        <div class="price-note">节点急、要求高、需要本人高频在线答疑、定制化方案和专业团队跟踪。每月限量不超过 5 名。</div>
       </div>
       <div class="price-row">
         <div class="price-name">科研背景 / 升学规划组合</div>
